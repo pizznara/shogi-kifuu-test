@@ -18,6 +18,7 @@
     margin:0;color:var(--ink);
     font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
     background-color:#fffdf7;
+    padding: 40px 0;
     overflow-x:hidden;
   }
   /* ふわふわ駒（あなたの画像を再利用して5〜6個だけ） */
@@ -35,7 +36,7 @@
   @keyframes float{0%{transform:translateY(0)}100%{transform:translateY(-40px)}}
   @keyframes drift{0%{transform:translateX(0) rotate(0)}100%{transform:translateX(12px) rotate(3deg)}}
 
-  .wrap{max-width:980px;margin:0 auto;padding:28px 20px 56px;position:relative}
+  .wrap{max-width:1100px;margin:0 auto;padding:40px 24px 80px;position:relative}
   .header{
     display:flex;align-items:center;gap:14px;margin-bottom:10px;padding:10px 14px;border-radius:18px;
     background:linear-gradient(135deg,#fff,#fff8);backdrop-filter:blur(6px);
@@ -78,7 +79,7 @@
   .btn:hover{filter:saturate(1.08)}
   .btn:active{transform:scale(.98)}
 
-  img.board{width:50%;height:auto;border:1px solid #fcd34d66;border-radius:14px;background:#fff}
+  img.board{width:70%;height:auto;border:1px solid #fcd34d66;border-radius:14px;background:#fff}
   .qchip{display:inline-block;font-size:12px;color:#b45309;background:#fff7ed;border:1px solid #fcd34d;border-radius:999px;padding:4px 10px}
   .qtitle{margin:.5rem 0 .6rem;font-size:20px;font-weight:800;letter-spacing:.3px}
 
