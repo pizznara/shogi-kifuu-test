@@ -152,9 +152,6 @@
 
   <!-- 画面 -->
   <div id="screen" class="card">
-    <div class="lead">
-      8問の“次の一手”に答えるだけ。<b>直観や好みでOK！</b><br>
-      あなたは <b>攻め棋風</b>？ <b>受け棋風</b>？ それとも <b>バランス型</b>？
     </div>
     <div class="cta">
       <button class="btn primary" id="startBtn">はじめる ▶</button>
@@ -226,6 +223,25 @@ function render(){
   const N=DATA.questions.length;
   setProgress(step);
 
+ if(step===0){
+    screen.innerHTML = `
+      <img src="https://shogicobin.com/wp-content/uploads/2025/11/ac16a071b1ab1c233dfc42822df46e0c.png"
+           alt="棋風診断トップ画像"
+           style="width:100%;max-width:900px;display:block;margin:0 auto 24px;border-radius:16px;box-shadow:0 6px 20px rgba(0,0,0,.08)" loading="eager">
+      <div class="lead">
+        8問の“次の一手”に答えるだけ。<b>直観や好みでOK！</b><br>
+        あなたは <b>攻め棋風</b>？ <b>受け棋風</b>？ それとも <b>バランス型</b>？
+      </div>
+      <div class="cta">
+        <button class="btn primary" id="startBtn">はじめる ▶</button>
+      </div>
+    `;
+    setProgress(0);
+    const btn=document.getElementById('startBtn');
+    if(btn) btn.addEventListener('click', startQuiz);
+    return;
+  }
+  
   if(step>=1 && step<=N){
     const q=DATA.questions[step-1];
     screen.innerHTML = `
@@ -342,20 +358,7 @@ function pickAndAutoNext(qid, idx, btnEl){
 }
 function resetAll(){
   step=0; for(const k in picks) delete picks[k];
-  screen.innerHTML = `
-   <img src="https://shogicobin.com/wp-content/uploads/2025/11/ac16a071b1ab1c233dfc42822df46e0c.png"
-         alt="棋風診断トップ画像"
-         style="width:100%;max-width:900px;display:block;margin:0 auto 24px;border-radius:16px;box-shadow:0 6px 20px rgba(0,0,0,.08)">
-    <div class="lead">
-      8問の“次の一手”に答えるだけ。<b>直観や好みでOK！</b><br>
-      あなたは <b>攻め棋風</b>？ <b>受け棋風</b>？ それとも <b>バランス型</b>？
-    </div>
-    <div class="cta">
-      <button class="btn primary" id="startBtn" onclick="window.__start && window.__start()">はじめる ▶</button>
-    </div>`;
-  setProgress(0);
-  const btn=document.getElementById('startBtn');
-  if(btn) btn.addEventListener('click', startQuiz);
+  render(); 
 }
 
 /* 進捗バー */
