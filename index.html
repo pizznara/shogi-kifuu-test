@@ -255,11 +255,14 @@ function render(){
     const attack=Math.round(Asum*100/Math.max(1,(Asum+Dsum)));
     const defense=100-attack;
     const diff=attack-defense;
-    let label="バランス型",desc="攻守のバランスが良く、状況に応じて最適手を選べるタイプ。";
-    if(diff>=40){label="超攻撃型";desc="主導権を握り、テンポよく押し切る切れ味タイプ。";}
-    else if(diff>=10){label="やや攻撃寄り";desc="好機を逃さず仕掛ける実戦派。";}
-    else if(diff<=-40){label="超受け巧者";desc="崩れない土台からカウンターで仕留める職人肌。";}
-    else if(diff<=-10){label="やや受け寄り";desc="安全重視で勝ちやすい終盤を作る安定タイプ。";}
+    let label="バランス型",desc="攻守のバランスが良く、状況に応じて柔軟に手を選ぶタイプ。";
+   if (diff >= 60) { label = "超攻撃型"; desc = "負けない将棋より勝つ将棋。攻めて攻めて勝利をもぎ取るタイプ。"; } 
+   else if (diff >= 40) { label = "かなり攻撃寄り"; desc = "積極的に動き、自力でペースを掴んでいくタイプ。"; } 
+   else if (diff >= 20) { label = "やや攻撃寄り"; desc = "チャンスは逃さず主導権を取りにいくタイプ。"; } 
+   else if (diff > -20) { label = "バランス型"; desc = "攻守のバランスが良く、状況に応じて柔軟に手を選べるタイプ。"; }
+   else if (diff > -40) { label = "やや受け寄り"; desc = "相手の攻めはしっかり受け止め、反撃で形勢を掴むタイプ。"; }
+   else if (diff > -60) { label = "かなり受け寄り"; desc = "安全重視で手堅く勝ちやすい局面を好むタイプ。"; }
+   else { label = "超受け巧者"; desc = "鉄壁の守備で勝利を確実なものとする受け師。"; }
     confettiBurst();
 
     const isHttp = /^https?:/i.test(location.protocol);
