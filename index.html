@@ -265,19 +265,21 @@ function render(){
    else { label = "超受け巧者"; desc = "鉄壁の守備で勝利を確実なものとする受け師。"; }
     confettiBurst();
 
-    const isHttp = /^https?:/i.test(location.protocol);
-    const rawText = `【将棋・棋風診断】
+const resultUrl = "https://shogicobin.com/kifuu";
+
+const rawText = `【将棋・棋風診断】
 攻撃${attack}% : 受け${defense}%（${label}）
-#棋風診断`;
+${resultUrl}
+#棋風診断 #COBIN`;
+
 const textParam = encodeURIComponent(rawText);
-const urlParam  = isHttp ? `&url=${encodeURIComponent(location.href)}` : "";
-const intentX   = `https://x.com/intent/tweet?text=${textParam}${urlParam}`;
+const intentX   = `https://x.com/intent/tweet?text=${textParam}`;
 
-
-    const copy = `【${BRAND_NAME} 将棋・棋風診断】
+const copy = `【将棋・棋風診断】
 攻撃${attack}% : 受け${defense}%（${label}）
 ${desc}
-#棋風診断`;
+${resultUrl}
+#棋風診断 #COBIN`;
 
     screen.innerHTML = `
       <div class="row" style="align-items:center; gap:10px; margin-bottom:8px">
