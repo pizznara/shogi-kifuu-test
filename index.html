@@ -266,9 +266,13 @@ function render(){
     confettiBurst();
 
     const isHttp = /^https?:/i.test(location.protocol);
-    const shareText = `【将棋・棋風診断】%0A攻撃${attack}% : 受け${defense}%（${encodeURIComponent(label)}）%0A#棋風診断`;
-    const shareUrlParam = isHttp ? `&url=${encodeURIComponent(location.href)}` : "";
-    const intentX   = `https://twitter.com/intent/tweet?text=${shareText}${shareUrlParam}`;
+    const rawText = `【将棋・棋風診断】
+攻撃${attack}% : 受け${defense}%（${label}）
+#棋風診断`;
+const textParam = encodeURIComponent(rawText);
+const urlParam  = isHttp ? `&url=${encodeURIComponent(location.href)}` : "";
+const intentX   = `https://x.com/intent/tweet?text=${textParam}${urlParam}`;
+
 
     const copy = `【${BRAND_NAME} 将棋・棋風診断】
 攻撃${attack}% : 受け${defense}%（${label}）
