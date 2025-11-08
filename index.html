@@ -270,7 +270,7 @@ const resultUrl = "https://shogicobin.com/kifuu";
 const rawText = `【将棋・棋風診断】
 攻撃${attack}% : 受け${defense}%（${label}）
 ${resultUrl}
-#棋風診断 #COBIN`;
+#棋風診断`;
 
 const textParam = encodeURIComponent(rawText);
 const intentX   = `https://x.com/intent/tweet?text=${textParam}`;
@@ -279,7 +279,7 @@ const copy = `【将棋・棋風診断】
 攻撃${attack}% : 受け${defense}%（${label}）
 ${desc}
 ${resultUrl}
-#棋風診断 #COBIN`;
+#棋風診断`;
 
     screen.innerHTML = `
       <div class="row" style="align-items:center; gap:10px; margin-bottom:8px">
